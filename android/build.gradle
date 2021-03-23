@@ -1,0 +1,51 @@
+group 'com.example.flutter_doraemonkit'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    buildTypes {
+        profile{
+            matchingFallbacks = ['debug']
+        }
+    }
+}
+
+
+dependencies{
+    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:3.0.0'
+    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.0.0'
+    debugImplementation 'com.github.anzaizai:EasyRefreshLayout:1.3.1'
+    debugImplementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    profileImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.0.0'
+    profileImplementation  'com.github.anzaizai:EasyRefreshLayout:1.3.1'
+    profileImplementation  'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+}
