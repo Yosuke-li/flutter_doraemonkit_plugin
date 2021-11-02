@@ -10,9 +10,9 @@ class FlutterDoraemonkit {
       const MethodChannel('flutter_doraemonkit');
 
 
-  static Future<bool> toggle() async {
+  static Future<bool?> toggle() async {
     if(Platform.isAndroid){
-      return  _channel.invokeMethod<bool>('toggle');
+      return  _channel.invokeMethod<bool?>('toggle');
     }else{
       return true;
     }

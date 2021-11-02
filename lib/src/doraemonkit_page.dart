@@ -4,9 +4,9 @@ import '../flutter_doraemonkit.dart';
 
 class DoraemonkitListener extends StatefulWidget {
   final Widget child;
-  final bool Function() enable;
+  final bool Function()? enable;
 
-  DoraemonkitListener({Key key, this.child, this.enable})
+  DoraemonkitListener({Key? key, required this.child, this.enable})
       : super(key: key);
 
   @override
@@ -15,7 +15,7 @@ class DoraemonkitListener extends StatefulWidget {
 }
 
 class _DoraemonkitListenerState extends State<DoraemonkitListener> {
-  int _value;
+  int? _value;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,9 @@ class _DoraemonkitListenerState extends State<DoraemonkitListener> {
       },
       onPointerUp: (_) {
         final value = DateTime.now().millisecondsSinceEpoch;
-        if (value - _value > 3 * 1000 &&
+        if (value - (_value ?? 0) > 3 * 1000 &&
             widget.enable != null &&
-            widget.enable()) {
+            widget.enable!()) {
           FlutterDoraemonkit.toggle();
         }
       },
